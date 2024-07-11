@@ -1,0 +1,21 @@
+import os
+from PyPDF2 import PdfReader, PdfWriter
+input_file_path = 'Downloads/My_Folder/My Docs/All Acad.pdf'
+output_folder=r'Downloads/My_Folder/My Docs'
+filename = 'Splited'
+
+def split_pdf(input_file_path, output_folder, filename):
+    
+    pdf = PdfReader(path)
+    for page in range(len(pdf.pages)):
+        pdf_writer = PdfWriter()
+        pdf_writer.add_page(pdf.pages[page])
+
+        output_filename =output_folder+'/'+'{}_page_{}.pdf'.format(fname, page+1)
+
+        with open(output_filename, 'wb') as out:
+            pdf_writer.write(out)
+
+        print('Created: {}'.format(output_filename))
+
+split_pdf(input_file_path, output_folder, filename)
